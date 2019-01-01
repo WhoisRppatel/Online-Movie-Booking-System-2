@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Select Threatre";
+    var src2 = " ";
+}
+<h2>
+    Current movies in : <b>@ViewData["city"]</b>
+</h2>
+<br><br>
+<center>
+    <table border="0">
+        <tr>
+            @foreach (var movie in Model){
+
+                src2 = "/Content/images/"+(string)movie+".jpg";
+
+            <td height="400px" width="300px">
+                <center>
+                    <div>
+                        <a href="#"><img src="@src2" height="300" width="200" /></a>
+                        <br><br>
+                        @Html.ActionLink((string)movie, "showtheatres", "Book",new { moviename=movie,cityname=@ViewData["city"]},null)
+                    </div>
+                </center>
+            </td>
+            }
+        </tr>
+        <tr></tr>
+    </table>
+</center>

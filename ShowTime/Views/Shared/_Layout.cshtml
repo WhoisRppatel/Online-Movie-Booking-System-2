@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .abab {
+            width: 100%;
+        }
+        .ab{
+            font-size:x-large;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-left">
+
+            @Html.ActionLink("Show Time", "Index", "Home", new { area = "" }, new { @class = "navbar-brand ab" })
+        </div>
+        @using (Html.BeginForm("shows", "Book", FormMethod.Post))
+        {
+        <div class="container">
+            <div class="navbar-collapse form-inline navbar-header">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.TextBox("search", null, new { @class = "form-control", placeholder = "City", @style = "width:400px;" })
+                <button class="btn btn-success" type="submit">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Find&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-search" style="font-size:20px;color:white"></i>
+                </button>
+                
+            </div>
+            <div class="navbar-right">
+
+                @{
+                    string st = "Hello " + Session["username"];
+
+                    if ((string)Session["username"] == "rpp")
+                    {
+
+                        @Html.ActionLink("Admin", "Admin", "Home", null, new { @class = "navbar-brand" })
+
+                    }
+                    @Html.ActionLink(st, "Index", "Home", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink("My Shows", "My_Shows", "Book", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Log Out", "Login", "Login", null, new { @class = "navbar-brand" })
+                }
+            </div>
+        </div>
+        }
+        
+    </div>
+  
+    
+  
+        @RenderBody()
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

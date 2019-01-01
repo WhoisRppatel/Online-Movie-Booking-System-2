@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        .login-form {
+            width: 340px;
+            margin: 50px auto;
+        }
+
+            .login-form form {
+                margin-bottom: 15px;
+                background: #f7f7f7;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                padding: 30px;
+            }
+
+            .login-form h2 {
+                margin: 0 0 15px;
+            }
+
+        .form-control, .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+
+        .btn {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("validateRegister", "Login", FormMethod.Post))
+    {
+    <div class="jumbotron">
+    <div class="login-form">
+        <div class="card-header">
+            @if (@ViewData["prob"] != null)
+            {
+                
+                <div class="alert alert-info fade in">
+                    
+                    <strong>@ViewData["prob"]</strong> 
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info fade in">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Welcome To ShowTime</strong> 
+                </div>
+
+            }
+        </div>
+        <h2 class="text-center">Sign Up</h2>
+        <div class="form-group">
+            @Html.TextBox("unm", null, new { @class = "form-control input-sm chat-input", placeholder = "Username", @style = "width:400px;", @required = true })
+        </div>
+        <div class="form-group">
+            @Html.Password("pass", null, new { @class = "form-control input-sm chat-input", placeholder = "Password", @style = "width:400px;", @required = true })
+        </div>
+        <div>
+            @Html.Password("repass", null, new { @class = "form-control input-sm chat-input", placeholder = "Re-Enter Password", @style = "width:400px;", @required = true })
+        </div>
+        <br />
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" style="width:200px">Sign Up</button>
+        </div>
+        
+        @Html.ActionLink("Already have an Account", "Login", "Login")
+    </div>
+    </div>
+    }
+</body>
+</html>
